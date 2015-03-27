@@ -7,7 +7,7 @@ class Conexion
   {
     try
     {
-      $this->mysqli = new mysqli("localhost", "root", "s3guR0.", "directorio");
+      $this->mysqli = new mysqli("localhost", "root", "", "directorio");
       if ($this->mysqli->connect_errno) {
 	throw new Exception("Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error);
       }
@@ -33,6 +33,24 @@ class Conexion
   public function cerrar()
   {
     $this->mysqli->close();
+  }
+  
+  public function abrir()
+  {
+    try
+    {
+      $this.mysqli = new mysqli("localhost","root","directorio");
+      if($this->mysqli_conect_errno)
+      {
+        throw new Exception("Fallo al conectar a MySql: (". $this->mysqli->conect_errno .")". $this->mysqli->conect_errno);
+      }
+      return true;
+    }
+    catch(Exception $e)
+    {
+      $this->error = $e->getMessage();
+      return false;
+    } 
   }
 }
 ?>
