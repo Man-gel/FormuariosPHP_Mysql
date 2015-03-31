@@ -19,6 +19,7 @@
       Cerrar sesi&oacute;n
      </a>
     </div>
+    <br/>
     <div>
      <?php
       if(isset($_SESSION['usuario']))
