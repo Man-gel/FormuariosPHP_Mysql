@@ -5,9 +5,9 @@
       $contrasena = $_POST['contra'];
      
       if ($login == 'root' && $contrasena == 'admin') {
-	  echo "<script language='javascript'>window.location='index.php'</script>;";
+	  echo "<script language='javascript'>window.location='in.php'</script>;";
 	  
       } else {
-	  echo "<script language='javascript'>window.location='login.php'</script>;";
+          echo "<script language='javascript'>window.location='login.php'</script>;";
       }
     ?>

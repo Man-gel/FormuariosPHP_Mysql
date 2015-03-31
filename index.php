@@ -1,13 +1,5 @@
 <?php
-  error_reporting(E_ALL);
-  ini_set('display_errors',1);
   session_start();
-  $_SESSION['usuario']= 'root';
-?>
-<?php
-
- // session_start();
- // $_SESSION['usuario']= 'root';
   require_once('BaseDatos.php');
   require_once('tabla.php');
 ?>
@@ -22,25 +14,29 @@
   <br/>
   <br/>
   <div>
-  <center>
-  <?php
- // session_start();
- // $_SESSION['usuario'] = 'root';
-  
-    if(isset($_SESSION['usuario']))
-    {
-      $basedatos = new $Accesos();
-      $consulta = basedatos->consultarTodo();
-      $muestra = new $Tabla();
-      $muestra->registros=$consulta;
-      $muestra->mostrarIndex();
-    }
-    else
-    {
-      echo "<script language='javascript'> window.location='/HTML5/Practica5_PHP/SesionPHP/login.php'</script>;";
-    }    
-  ?>
-  </center>
+    <div>
+     <a href='logout.php' >
+      Cerrar sesi&oacute;n
+     </a>
+    </div>
+    <div>
+     <?php
+      if(isset($_SESSION['usuario']))
+      {
+        $basedatos = new Accesos();
+        $consulta = $basedatos->consultarTodo();
+        $muestra = new Tabla();
+        $muestra->registros=$consulta;
+        $muestra->mostrarIndex();
+      }
+      else
+      {
+        session_start();
+        unset($_SESSION['usuario']);
+        echo "<script language='javascript'> window.location='login.php'</script>;";
+      }    
+     ?>
+    </div>
   </div>
   </body>
  </html>

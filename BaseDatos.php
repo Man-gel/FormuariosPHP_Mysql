@@ -1,6 +1,7 @@
 <?php
 require_once('conexion.php');
 
+
 class Accesos
 {
   public function agregar($titulo,$contenido,$autor,$fecha)
