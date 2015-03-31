@@ -39,7 +39,7 @@ class Conexion
   {
     try
     {
-      $this.mysqli = new mysqli("localhost","root","directorio");
+      $this->mysqli = new mysqli("localhost","root","directorio");
       if($this->mysqli_conect_errno)
       {
         throw new Exception("Fallo al conectar a MySql: (". $this->mysqli->conect_errno .")". $this->mysqli->conect_errno);

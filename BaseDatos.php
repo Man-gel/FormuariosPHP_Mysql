@@ -7,12 +7,12 @@ class Accesos
   {
     try
     {
-    $conexion = new Conexion()
-    if(conexion->conectar())
+    $conexion = new Conexion();
+    if(!$conexion->conectar())
     {
       throw new Exception($conexion->getError());
     }
-    $insertar = "INSERT INTO `registro` ".
+    $insertar = "INSERT INTO `registros` ".
 		"(`titulo`, `contenido`, `autor`, `fecha`) ".
 		"VALUES ".
 		"('".$titulo."', '".$contenido."', '".$autor."', '".date_format($fecha,"Y-m-d")."');";
@@ -32,7 +32,7 @@ class Accesos
     try
     {
     $conexion = new Conexion();
-    if(conexion->conectar())
+    if(!$conexion->conectar())
     {
       throw new Exception($conexion->getError());
     }
@@ -54,7 +54,7 @@ class Accesos
     {
     $resultado = array();
     $conexion = new Conexion();
-    if(conexion->conectar())
+    if(!$conexion->conectar())
     {
       throw new Exception($conexion->getError());
     }
@@ -85,7 +85,7 @@ class Accesos
     {
     $resultado = array();
     $conexion = new Conexion();
-    if(conexion->conectar())
+    if(!$conexion->conectar())
     {
       throw new Exception($conexion->getError());
     }
@@ -110,11 +110,11 @@ class Accesos
     
   }
   
-  public function editar($campo,$nu_val) 
+  public function editarMultiple($campo,$nu_val,$id)
   {
     try
     {
-    $sql = "UPDATE `registros` SET `".$campo."` = '".$nu_val."' WHERE `id` = '".."'";
+    $sql = "UPDATE `registros` SET `".$campo."` = '".$nu_val."' WHERE `id` = '".$id."'";
     if($rst = $conexion->mysqli->query($sql))
     {
       if($rst->num_rows > 0)
@@ -133,5 +133,23 @@ class Accesos
     }
     
   }
- 
+
+  public function agregarMultiple($titulo, $contenido, $autor, $fecha)
+  {
+    try
+    {
+    $insertar = "INSERT INTO `registros` ".
+                "(`titulo`, `contenido`, `autor`, `fecha`) ".
+                "VALUES ".
+                "('".$titulo."', '".$contenido."', '".$autor."', '".date_format($fecha,"Y-m-d")."');";
+                $resultado = $conexion->mysqli->query($insertar);
+                return $resultado;
+    }
+    catch(Exception $e)
+    {
+       return false;
+    }
+
+  }
+} 
 ?>

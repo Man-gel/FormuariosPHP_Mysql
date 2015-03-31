@@ -1,7 +1,46 @@
 <?php
+  error_reporting(E_ALL);
+  ini_set('display_errors',1);
+  session_start();
+  $_SESSION['usuario']= 'root';
+?>
+<?php
 
+ // session_start();
+ // $_SESSION['usuario']= 'root';
+  require_once('BaseDatos.php');
+  require_once('tabla.php');
 ?>
  <!DOCTYPE HTML>
- <html>
-
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title> Registros: MySql y PHP</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+  <h3>Registros desde BD con MariaDB</h3>
+  <br/>
+  <br/>
+  <div>
+  <center>
+  <?php
+ // session_start();
+ // $_SESSION['usuario'] = 'root';
+  
+    if(isset($_SESSION['usuario']))
+    {
+      $basedatos = new $Accesos();
+      $consulta = basedatos->consultarTodo();
+      $muestra = new $Tabla();
+      $muestra->registros=$consulta;
+      $muestra->mostrarIndex();
+    }
+    else
+    {
+      echo "<script language='javascript'> window.location='/HTML5/Practica5_PHP/SesionPHP/login.php'</script>;";
+    }    
+  ?>
+  </center>
+  </div>
+  </body>
  </html>
