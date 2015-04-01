@@ -80,7 +80,7 @@ class Accesos
     
   }
 
-  public function consultarXcampo($campo,$valor) 
+  public function consultarXcampo($valor) 
   {
     try
     {
@@ -90,7 +90,7 @@ class Accesos
     {
       throw new Exception($conexion->getError());
     }
-    $sql = "SELECT * FROM registros WHERE `".$campo."` = '".$valor."'";
+    $sql = "SELECT * FROM registros WHERE `id` = '".$valor."'";
     if($rst = $conexion->mysqli->query($sql))
     {
       if($rst->num_rows > 0)

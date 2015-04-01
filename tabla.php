@@ -11,8 +11,8 @@
     public $registros;
     public function mostrarIndex()
     {
-    echo "<form action='./sysbd/botones.php' method='POST'>";
-    echo '<table>';
+    echo "<form id='form1' action='./sysbd/botones.php' method='POST'>";
+    echo '<table border="1">';
      echo '<tr>';
       echo '<th>ID</th>';
       echo '<th>T&iacute;tulo</th>';
@@ -24,7 +24,7 @@
     foreach ($this->registros as $registro)
     {
     echo '<tr>';
-     echo '<td>'.$registro['id'].'</td>';
+     echo '<td>'.$registro['id'].'<input type="hidden" name="id" id="id" value="'.$registro['id'].'">'.'</td>';
      echo '<td>'.$registro['titulo'].'</td>';
      echo '<td>'.$registro['contenido'].'</td>';
      echo '<td>'.$registro['autor'].'</td>';
@@ -38,21 +38,5 @@
     echo "<input type='submit' name='nuevo' value='NUEVO' id='nuevo'>";
     echo "</form>";
     }
-
-    private function botonEditar()
-    {  
-     
-      echo "<input type='submit' name='editar' value='Editar' id='editar'>";
-    }
-    private function botonNuevo()
-    {  
-      echo "<input type='submit' name='nuevo' value='NUEVO' id='nuevo'>";
-    }
-    private function botonEliminar()
-    {  
-      echo "<input type='submit' name='eliminar' value='Eliminar' id='eliminar'>";
-    }
-
-
   }
 ?>

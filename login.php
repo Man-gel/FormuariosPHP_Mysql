@@ -5,9 +5,13 @@
     <title>Iniciar Sesi&oacute;n </title>
   </head>
   <body>
-    <div>
-     <center> <form action="entrar.php" method="POST">
-       <label for="login">Usuario</label>
+   <form action="entrar.php" method="POST">
+     <center>
+       <div> 
+       <h2>Sign in</h2>
+       <br/>
+       <br/>
+       <label for="login">   Usuario</label>
        <input type="text" maxlength="10" name="login" id="login">
        </br>
        </br>
@@ -16,7 +20,8 @@
        </br>
        </br>
        <input type="submit" name="enviar" Value="Entrar">
-      </form></center>
-    </div>
+      </div>
+     </center>
+    </form>
   </body>
 </html>
