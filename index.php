@@ -1,6 +1,8 @@
 <?php
+  error_reporting(E_ALL);
+  ini_set('display_errors','1');
   session_start();
-  require_once('BaseDatos.php');
+  require_once('./sysbd/BaseDatos.php');
   require_once('tabla.php');
 ?>
  <!DOCTYPE HTML>

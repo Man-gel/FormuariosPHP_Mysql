@@ -1,3 +1,10 @@
+<?php 
+  session_start();
+  if(!isset($_SESSION['usuario']))
+  {
+    echo "<script language='javascript'>window.location='login.php'</script>;";
+  }
+?>
 <html>
     <head>
      <title>Agregar nuevo registro</title>
@@ -5,7 +12,7 @@
     <body>
         <div>
             <h2>Nuevo Registro</h2>
-            <form action="guardar.php" method="POST">
+            <form action="./sysbd/botones.php" method="POST">
                 <label for="titulo">T&iacute;tulo</label></br>
                 <input type="text" maxlength="100" name="titulo" id="titulo">
                 </br>
@@ -22,6 +29,7 @@
                 <br/>
                 <br/>
                 <input type="submit" name="agregar" Value="Agregar">
+                <input type="submit" name="cancelar" Value="Cancelar">
             </form>
         </div>
     </body>
