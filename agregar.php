@@ -5,14 +5,17 @@
     echo "<script language='javascript'>window.location='login.php'</script>;";
   }
 ?>
+
+<!DOCTYPE HTML>
 <html>
-    <head>
+  <head>
      <title>Agregar nuevo registro</title>
-    </head>
-    <body>
-        <div>
+ </head>
+     <body>
+         <div>
+          <center>
             <h2>Nuevo Registro</h2>
-            <form action="./sysbd/botones.php" method="POST">
+            <form name="form1" action="botones.php" method="POST">
                 <label for="titulo">T&iacute;tulo</label></br>
                 <input type="text" maxlength="100" name="titulo" id="titulo">
                 </br>
@@ -27,14 +30,16 @@
                 </br>
                 <label for='fecha'>Fecha</label></br>
                 <?php
-		 $fdate = date('Y-m-d',mktime());
-                 echo "<input type='text' id='fecha' name='fecha'value='".$fdate."'>";
+		 date_default_timezone_set('America/Mexico_City');
+		 $fdate = date('Y-m-d');
+                 echo "<input type='text' id='fecha' name='fecha' value='".$fdate."'>";
                 ?>
                 <br/>
                 <br/>
-                <input type="submit" name="agregar" Value="Agregar">
-                <input type="submit" name="cancelar" Value="Cancelar">
+                <input type="submit" name="agregar" value="Agregar">
+                <input type="submit" name="cancelar" value="Cancelar">
             </form>
+            </center>
         </div>
     </body>
 </html>

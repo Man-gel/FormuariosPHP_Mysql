@@ -16,7 +16,7 @@ class Accesos
     $insertar = "INSERT INTO `registros` ".
 		"(`titulo`, `contenido`, `autor`, `fecha`) ".
 		"VALUES ".
-		"('".$titulo."', '".$contenido."', '".$autor."', '".date_format($fecha,"Y-m-d")."');";
+		"('".$titulo."', '".$contenido."', '".$autor."', '".$fecha."');";
 		$resultado = $conexion->mysqli->query($insertar);
 		$conexion->cerrar();
 		return $resultado;
@@ -80,7 +80,7 @@ class Accesos
     
   }
 
-  public function consultarXcampo($valor) 
+  public function consultarXid($val_id) 
   {
     try
     {
@@ -90,7 +90,7 @@ class Accesos
     {
       throw new Exception($conexion->getError());
     }
-    $sql = "SELECT * FROM registros WHERE `id` = '".$valor."'";
+    $sql = "SELECT * FROM registros WHERE `id` = '".$val_id."'";
     if($rst = $conexion->mysqli->query($sql))
     {
       if($rst->num_rows > 0)
@@ -111,31 +111,22 @@ class Accesos
     
   }
   
-  public function editarMultiple($campo,$nu_val,$id)
+  public function editarCampo($campo,$nu_val,$id,$conexion)
   {
     try
     {
-    $sql = "UPDATE `registros` SET `".$campo."` = '".$nu_val."' WHERE `id` = '".$id."'";
-    if($rst = $conexion->mysqli->query($sql))
-    {
-      if($rst->num_rows > 0)
-      {
-	while($row = $rst->fetch_assoc())
-	{	
-	  $resultado[] = $row;
-	}
-      }
-    }
-    return $resultado;
+      $sql = "UPDATE `registros` SET `".$campo."` = '".$nu_val."' WHERE `id` = '".$id."'";
+      $resultado = $conexion->mysqli->query($sql);
+      return $resultado;
     }
     catch(Exception $e)
     {
-       return array();
+       return false;
     }
     
   }
 
-  public function agregarMultiple($titulo, $contenido, $autor, $fecha)
+  public function agregarMultiplesFilas($titulo, $contenido, $autor, $fecha)
   {
     try
     {
