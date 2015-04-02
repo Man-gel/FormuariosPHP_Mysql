@@ -44,7 +44,7 @@
                 <?php
 		 date_default_timezone_set('America/Mexico_City');
 		 $fdate = date('Y-m-d');
-                 echo "<input type='text' id='fecha' readonly name='fecha'value='".$fdate."'>";
+                 echo "<input type='text' id='fecha' name='fecha' value='".$fdate."'>";
                 ?>
                 <br/>
                 <br/>

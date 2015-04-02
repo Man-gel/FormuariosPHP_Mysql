@@ -11,6 +11,12 @@
   $contenido = $_POST['cont'];
   $autor = $_POST['autor'];
   $fecha = $_POST['fecha'];
+  var_dump($fecha);
+  var_dump($contenido);
+  var_dump($autor);
+  var_dump($titulo);
+  exit();
+  exit();
   if($titulo != NULL && $contenido != NULL && $autor != NULL && $fecha != NULL)
   {
     $basedatos = new Accesos();

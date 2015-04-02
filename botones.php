@@ -10,14 +10,14 @@
   }
   
 ?>
+
 <!DOCTYPE HTML>
-  
 <html>
   <head>
     <title>Iniciar Sesi&oacute;n </title>
   </head>
    <body>
-    <form name='formulario' action='editar.php' method='POST'>
+   <form name='formulario' action='editar.php' method='POST'>
     <?php
       if($_POST['editar'])
       {
@@ -25,10 +25,10 @@
 	echo '<input type="hidden" name="idoculto" id="idoculto" value="'.$idboton.'">';
 	echo "<script>document.formulario.submit()</script>";	
       }
-      if($_POST['eliminar'])
+      if($_POST['aceptar'])
       {
-	$idboton = $_REQUEST['eliminar'];
-	$basedatos = new Accesos();
+        $idboton = $_REQUEST['aceptar'];
+        $basedatos = new Accesos();
 	$resultado = $basedatos->eliminar($idboton);
 	echo "<center><h2>Se han eliminado </h2>"."<h1>".$resultado."<h1>"."<h2>Registros</h2></center>";
 	echo "<script language='javascript'>window.location='index.php'</script>;";
@@ -39,7 +39,15 @@
       }
       if($_POST['cancelar'])
       {
+	unset($_POST);
 	echo "<script language='javascript'>window.location='index.php'</script>;";
+      }
+      if($_POST['eliminar'])
+      {
+	$idboton = $_REQUEST['eliminar'];
+	echo '<input type="hidden" name="idoculto" id="idoculto" value="'.$idboton.'">';
+	echo "<script>document.formulario.action='eliminar.php'</script>";
+	echo "<script>document.formulario.submit()</script>";
       }
       if($_POST['agregar'])
       {
